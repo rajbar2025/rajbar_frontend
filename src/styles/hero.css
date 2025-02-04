@@ -1,0 +1,15 @@
+.hero-section {
+    text-align: center;
+    padding: 5rem;
+    background: url('../assets/hero-bg.png') center/cover;
+    color: white;
+  }
+  
+  .hero-btn {
+    background: red;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    cursor: pointer;
+  }
+  
