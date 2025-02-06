@@ -1,15 +1,156 @@
+/* Updated hero.css to match Figma design */
+
 .hero-section {
-    text-align: center;
-    padding: 5rem;
-    background: url('../assets/hero-bg.png') center/cover;
-    color: white;
+  text-align: center;
+  padding: 4rem;
+  background: #fff;
+  color: #1a1a1a;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #2c2c2c;
+  font-family: 'Poppins', sans-serif;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #6c6c6c;
+  margin-bottom: 1.5rem;
+}
+
+.hero-section p span {
+  color: #b22222;
+  font-weight: 600;
+}
+
+.hero-btn {
+  background: #b22222;
+  max-width: 239px;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.hero-btn:hover {
+  background: #8b1a1a;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 450px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: slideDown 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.popup-box h2 {
+  margin-bottom: 1rem;
+  color: black;
+  font-family: 'Poppins', sans-serif;
+}
+.mb-10{
+  margin-bottom: 10px;
+}
+.mt-10{
+  margin-top: 10px;
+}
+.responsive-img {
+  max-width: 1030px;
+  width: 100%;
+  height: auto; 
+  display: block; 
+  margin: 0 auto; 
+}
+.popup-box input, .popup-box textarea {
+  width: 90%;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.submit-btn {
+  background: #008000;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 1rem;
+}
+
+.submit-btn:hover {
+  background: #006400;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 2rem;
   }
-  
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+  .hero-section p {
+    font-size: 1rem;
+  }
   .hero-btn {
-    background: red;
-    padding: 1rem 2rem;
-    border-radius: 10px;
-    margin-top: 1rem;
-    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
   }
-  
+  .popup-box {
+    width: 95%;
+  }
+}

@@ -1,11 +1,25 @@
-import "../styles/footer.css";
+import React from "react";
+import "../styles/footer.css"; 
+// import brandLogo from "../assets/brand-logo.png"; 
 
-function Footer() {
+const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white p-4 text-center">
-      <p>© {new Date().getFullYear()} Rajasthan Bartenders. All rights reserved.</p>
+    <footer className="footer">
+      <div className="footer-content">
+        <p>Handled and Maintained by <strong>Yarsi Coep Tech Services</strong></p>
+        <p>
+          Visit us at:{" "}
+          <a href="https://www.yarsicorp.com" target="_blank" rel="noopener noreferrer">
+            yarsicorp.com
+          </a>
+        </p>
+        <div className="brand">
+          {/* <img src={brandLogo} alt="Rajasthan Bartenders" className="logo" /> */}
+          <span>Rajasthan Bartenders</span>
+        </div>
+      </div>
     </footer>
   );
-}
+};
 
 export default Footer;
