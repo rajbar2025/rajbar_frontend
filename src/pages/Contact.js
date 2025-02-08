@@ -27,7 +27,6 @@ const ContactForm = () => {
     setErrors({}); // Reset errors before submission
 
     try {
-      const response = await submitFeedback(formData);
       setResponseMessage("Your message has been sent successfully!");
       setFormData({
         first_name: "",

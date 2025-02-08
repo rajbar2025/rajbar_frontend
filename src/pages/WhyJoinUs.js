@@ -5,8 +5,8 @@ import whyus2 from "../assets/whyus2.png";
 import whyus3 from "../assets/whyus3.png";
 
 const WhyJoinUs = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState(null);
 
   const handleJoinNowClick = () => {
     const phoneNumber = "9828859669"; 
@@ -123,12 +123,13 @@ const WhyJoinUs = () => {
       <button 
         className="join-now-btn" 
         onClick={handleJoinNowClick}
-        disabled={isLoading}
+        // disabled={isLoading}
       >
-        {isLoading ? "Processing..." : "Join Now"}
+        {/* {isLoading ? "Processing..." : "Join Now"} */}
+        Join Now
       </button>
 
-      {error && <p className="error-message">{error}</p>}
+      {/* {error && <p className="error-message">{error}</p>} */}
     </div>
   );
 };

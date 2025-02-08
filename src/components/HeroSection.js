@@ -107,13 +107,13 @@ function HeroSection() {
       {/* Carousel Section */}
       <Slider {...settings} className="carousel-container">
         <div>
-          <img src={mainImg1} alt="Main Image 1" className="responsive-img" />
+          <img src={mainImg1} className="responsive-img" />
         </div>
         <div>
-          <img src={mainImg2} alt="Main Image 2" className="responsive-img" />
+          <img src={mainImg2} className="responsive-img" />
         </div>
         <div>
-          <img src={mainImg3} alt="Main Image 3" className="responsive-img" />
+          <img src={mainImg3} className="responsive-img" />
         </div>
       </Slider>
 
