@@ -90,3 +90,61 @@
     font-size: 1.8rem;
   }
 }
+
+
+/* Founder Section Styling */
+.founder-section {
+  text-align: center;
+  margin-top: 50px;
+  padding: 40px 20px;
+  background: #f5f5f5;
+  border-radius: 15px;
+}
+
+.founder-title {
+  font-size: 28px;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.founder-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.founder-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.founder-img:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+  transform: scale(1.05);
+}
+
+.founder-name {
+  font-size: 22px;
+  font-weight: 600;
+  color: #222;
+  margin-top: 15px;
+  font-family: "Poppins", sans-serif;
+}
+
+.founder-quote {
+  font-size: 18px;
+  font-style: italic;
+  color: #555;
+  max-width: 600px;
+  line-height: 1.6;
+  font-family: "Roboto", sans-serif;
+  margin-top: 10px;
+}

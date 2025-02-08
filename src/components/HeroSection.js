@@ -1,6 +1,13 @@
 import { useState } from "react";
+import Slider from "react-slick"; 
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css"; 
 import "../styles/hero.css";
-import mainImg from "../assets/hero-bg.png";
+
+import mainImg1 from "../assets/hero-bg.png"; 
+import mainImg2 from "../assets/hero-bg1.jpg";
+import mainImg3 from "../assets/hero-bg2.jpg";
+
 import { registerUser } from "../api/api"; 
 
 function HeroSection() {
@@ -71,19 +78,44 @@ function HeroSection() {
     }
   };
 
+  // Slick Carousel settings
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    fade: true, 
+    cssEase: "linear",
+  };
+  
+
   return (
     <section className="hero-section">
       <h1>Raise the Bar with <br/> Rajasthan Bartender's Association</h1>
       <p>
         Unifying the Craft of Mixology Across Rajasthan 
-        {/* with  Mixologist <span>Mr. Virendra Singh</span> */}
       </p>
       <button className="hero-btn" onClick={() => setShowPopup(true)}>
         Register Now
       </button>
       <br/>
       <p className="mb-10 mt-10">Join us today and be part of an exclusive bartending community!</p>
-      <img src={mainImg} alt="Main Image" className="responsive-img" />
+
+      {/* Carousel Section */}
+      <Slider {...settings} className="carousel-container">
+        <div>
+          <img src={mainImg1} alt="Main Image 1" className="responsive-img" />
+        </div>
+        <div>
+          <img src={mainImg2} alt="Main Image 2" className="responsive-img" />
+        </div>
+        <div>
+          <img src={mainImg3} alt="Main Image 3" className="responsive-img" />
+        </div>
+      </Slider>
 
       {showPopup && (
         <div className="popup-overlay">

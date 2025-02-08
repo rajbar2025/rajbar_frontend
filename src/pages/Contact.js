@@ -75,25 +75,25 @@ const ContactForm = () => {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <div className="form-field">
-              <label>First Name</label>
+              {/* <label>First Name</label> */}
               <input
                 type="text"
                 name="first_name"
                 value={formData.first_name}
                 onChange={handleChange}
-                placeholder="Enter First Name"
+                placeholder="First Name"
                 required
               />
               {errors.first_name && <p className="error">{errors.first_name[0]}</p>}
             </div>
             <div className="form-field">
-              <label>Last Name</label>
+              {/* <label>Last Name</label> */}
               <input
                 type="text"
                 name="last_name"
                 value={formData.last_name}
                 onChange={handleChange}
-                placeholder="Enter Last Name"
+                placeholder="Last Name"
                 required
               />
               {errors.last_name && <p className="error">{errors.last_name[0]}</p>}
@@ -101,25 +101,25 @@ const ContactForm = () => {
           </div>
           <div className="form-group">
             <div className="form-field">
-              <label>Email</label>
+              {/* <label>Email</label> */}
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="Enter Email"
+                placeholder="Email"
                 required
               />
               {errors.email && <p className="error">{errors.email[0]}</p>}
             </div>
             <div className="form-field">
-              <label>Phone Number</label>
+              {/* <label>Phone Number</label> */}
               <input
                 type="text"
                 name="phone_number"
                 value={formData.phone_number}
                 onChange={handleChange}
-                placeholder="Enter Phone Number"
+                placeholder="Phone Number"
                 required
               />
               {errors.phone_number && <p className="error">{errors.phone_number[0]}</p>}
