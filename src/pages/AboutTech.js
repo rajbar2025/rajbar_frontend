@@ -1,5 +1,6 @@
 import "../styles/abouttech.css";
 import { motion } from "framer-motion";
+import Saq from "../assets/saq-1.webp"
 
 const teamMembers = [
   {
@@ -12,7 +13,7 @@ const teamMembers = [
   {
     name: "Saqulain",
     role: "Tech Lead",
-    image: "https://drive.google.com/uc?export=view&id=1ah4qyN1cl9O_wWEDr--fpVNc3XTvsGLq",
+    image: `${Saq}`,
     description: "Bridging innovation with performance to build seamless experiences.",
     profileUrl: "https://www.linkedin.com/in/saqulain/",
   },
