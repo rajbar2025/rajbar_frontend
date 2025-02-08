@@ -41,3 +41,52 @@ export const createRazorpayOrder = async (userData) => {
     throw error;
   }
 };
+
+
+export const submitFeedback = async (feedbackData, token = null) => {
+  const url = `${API_ENDPOINT}/feedback/`;
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  if (token) {
+    config.headers.Authorization = `Token ${token}`;
+  }
+
+  try {
+    const response = await axios.post(url, feedbackData, config);
+    return response.data;
+  } catch (error) {
+    console.error("Error submitting feedback", error);
+    throw error.response ? error.response.data : error;
+  }
+};
+
+
+
+export const getEvents = async () => {
+  const url = `${API_ENDPOINT}/events/`;
+
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching events", error);
+    throw error.response ? error.response.data : error;
+  }
+};
+
+export const getTestimonials = async () => {
+  const url = `${API_ENDPOINT}/testimonials/`;
+
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching testimonials", error);
+    throw error.response ? error.response.data : error;
+  }
+};

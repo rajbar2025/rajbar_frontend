@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar.js";
 import Footer from "./components/Footer.js";
 import Home from "./pages/Home.js";
 import About from "./pages/About.js";
-import Events from "./pages/Events.js";
+import Events from "./components/EventsSection.js";
 import Contact from "./pages/Contact.js";
 import Register from "./pages/Register.js";
 

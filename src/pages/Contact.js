@@ -1,22 +1,51 @@
 import { useState } from "react";
+import { submitFeedback } from "../api/api"; 
 import "../styles/contact.css";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     email: "",
-    phone: "",
+    phone_number: "",
     message: "",
   });
 
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [responseMessage, setResponseMessage] = useState(null);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: "" }); // Clear error when user types
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData);
+    setLoading(true);
+    setResponseMessage(null);
+    setErrors({}); // Reset errors before submission
+
+    try {
+      const response = await submitFeedback(formData);
+      setResponseMessage("Your message has been sent successfully!");
+      setFormData({
+        first_name: "",
+        last_name: "",
+        email: "",
+        phone_number: "",
+        message: "",
+      });
+    } catch (error) {
+      if (error.response && error.response.data) {
+        setErrors(error.response.data); // Set API validation errors
+      } else {
+        setResponseMessage("Failed to send message. Please try again.");
+      }
+      console.error("Feedback submission error:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -46,21 +75,25 @@ const ContactForm = () => {
               <label>First Name</label>
               <input
                 type="text"
-                name="firstName"
-                value={formData.firstName}
+                name="first_name"
+                value={formData.first_name}
                 onChange={handleChange}
                 placeholder="Enter First Name"
+                required
               />
+              {errors.first_name && <p className="error">{errors.first_name[0]}</p>}
             </div>
             <div className="form-field">
               <label>Last Name</label>
               <input
                 type="text"
-                name="lastName"
-                value={formData.lastName}
+                name="last_name"
+                value={formData.last_name}
                 onChange={handleChange}
                 placeholder="Enter Last Name"
+                required
               />
+              {errors.last_name && <p className="error">{errors.last_name[0]}</p>}
             </div>
           </div>
           <div className="form-group">
@@ -72,17 +105,21 @@ const ContactForm = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Enter Email"
+                required
               />
+              {errors.email && <p className="error">{errors.email[0]}</p>}
             </div>
             <div className="form-field">
               <label>Phone Number</label>
               <input
                 type="text"
-                name="phone"
-                value={formData.phone}
+                name="phone_number"
+                value={formData.phone_number}
                 onChange={handleChange}
                 placeholder="Enter Phone Number"
+                required
               />
+              {errors.phone_number && <p className="error">{errors.phone_number[0]}</p>}
             </div>
           </div>
           <div className="form-field">
@@ -92,9 +129,14 @@ const ContactForm = () => {
               value={formData.message}
               onChange={handleChange}
               placeholder="Write your message.."
+              required
             ></textarea>
+            {errors.message && <p className="error">{errors.message[0]}</p>}
           </div>
-          <button type="submit">Send Message</button>
+          <button type="submit" disabled={loading}>
+            {loading ? "Sending..." : "Send Message"}
+          </button>
+          {responseMessage && <p className="response-message">{responseMessage}</p>}
         </form>
       </div>
     </div>

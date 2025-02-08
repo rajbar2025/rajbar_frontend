@@ -1,49 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
+import { getTestimonials } from '../api/api'; 
 import './../styles/testimonials.css'; 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+const backendURL = process.env.NODE_ENV === "development"
+  ? "http://localhost:8000" 
+  : "https://your-live-backend.com";
+  
 const Testimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Dummy data instead of API call
-    const dummyData = [
-      {
-        content: "Being a part of the Rajasthan Bartender's Association has been transformative for my career. The skill development workshops and networking opportunities have helped me refine my craft and connect with top professionals in the industry.",
-        name: "Rajiv Mehta",
-        designation: "Senior Bartender, Jaipur",
-        profileUrl: "https://via.placeholder.com/50",
-      },
-      {
-        content: "I joined the association to improve my mixology skills, and it exceeded all my expectations. The masterclasses and events are well-organized and incredibly insightful. I feel proud to be part of such a vibrant community.",
-        name: "Simran Kaur",
-        designation: "Aspiring Bartender, Jodhpur",
-        profileUrl: "https://via.placeholder.com/50",
-      },
-      {
-        content: "The Rajasthan Bartender's Association is more than just an organization—it's a family. From competitions to exclusive events, every experience has been enriching and fun. Highly recommended for anyone passionate about bartending.",
-        name: "Akash Sharma",
-        designation: "Mixologist, Udaipur",
-        profileUrl: "https://via.placeholder.com/50",
-      },
-      {
-        content: "Joining the association opened doors to many opportunities. I gained valuable skills and met professionals who have supported my career growth.",
-        name: "Ravi Kumar",
-        designation: "Bartender, Bikaner",
-        profileUrl: "https://via.placeholder.com/50",
-      },
-      {
-        content: "A wonderful community to learn and grow. I have improved my skills tremendously and made some lifelong friends.",
-        name: "Sneha Sharma",
-        designation: "Mixologist, Jaipur",
-        profileUrl: "https://via.placeholder.com/50",
-      },
-    ];
+    const fetchTestimonials = async () => {
+      try {
+        const data = await getTestimonials(); // Fetch data from API
+        const formattedData = data.map(item => ({
+          ...item,
+          profileUrl: item.profile_image ? `${backendURL}${item.profile_image}` : "https://via.placeholder.com/50"
+        }));
+        setTestimonials(formattedData);
+      } catch (error) {
+        console.error("Failed to fetch testimonials", error);
+        setError("Failed to load testimonials. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    // Set dummy data to state
-    setTestimonials(dummyData);
+    fetchTestimonials();
   }, []);
 
   // Slick slider settings
@@ -72,6 +60,9 @@ const Testimonials = () => {
       }
     ]
   };
+
+  if (loading) return <p>Loading testimonials...</p>;
+  if (error) return <p className="error-message">{error}</p>;
 
   return (
     <div className="testimonials-section">
