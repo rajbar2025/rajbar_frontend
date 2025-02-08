@@ -11,6 +11,8 @@ const AboutUs = () => {
       <div className="content">
         <div className="image-grid">
         <img src={AboutUsimg} alt="Liquor" className="responsive-img" />
+        <img src={AboutUsimg} alt="Liquor" className="responsive-img" />
+        <img src={AboutUsimg} alt="Liquor" className="responsive-img" />
 
           {/* <img src="/bar.jpg" alt="Bar Scene" className="img" />
           <img src="/whiskey.jpg" alt="Whiskey Bottle" className="img img-rotate" />

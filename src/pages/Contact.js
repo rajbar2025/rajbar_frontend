@@ -54,16 +54,19 @@ const ContactForm = () => {
       <div className="contact-info">
         <h2 className="contact-title">Contact Us</h2>
         <p className="contact-desc">
-          Founded with a vision to uplift and empower the bartending community, we regularly organize events.
+          Rajasthan Bartenders was founded by <strong>Mixologist Virender Singh</strong> with a vision to uplift and empower the bartending community. Our mission is to elevate bartending standards through education, training, and exclusive networking opportunities.
+        </p>
+        <p className="contact-desc">
+          We regularly organize workshops, competitions, and industry events to connect and inspire bartenders across the region. Whether you are an aspiring bartender or an experienced professional, we welcome you to be part of our vibrant community.
         </p>
         <p className="contact-desc">Feel free to get in touch with us through our channels:</p>
         <div className="contact-details">
           <h3>Email Us</h3>
-          <p>gsfg@gmail.com</p>
+          <p>rajasthanbartenders@gmail.com</p>
         </div>
         <div className="contact-details">
           <h3>Call Us</h3>
-          <p>1234567890</p>
+          <p>9828859669</p>
         </div>
       </div>
 

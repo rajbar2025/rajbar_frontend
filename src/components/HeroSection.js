@@ -75,7 +75,8 @@ function HeroSection() {
     <section className="hero-section">
       <h1>Raise the Bar with <br/> Rajasthan Bartender's Association</h1>
       <p>
-        Unifying the Craft of Mixology Across Rajasthan with Mixologist <span>Mr. Virendra Singh</span>
+        Unifying the Craft of Mixology Across Rajasthan 
+        {/* with  Mixologist <span>Mr. Virendra Singh</span> */}
       </p>
       <button className="hero-btn" onClick={() => setShowPopup(true)}>
         Register Now

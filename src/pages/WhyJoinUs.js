@@ -8,81 +8,88 @@ const WhyJoinUs = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleJoinNowClick = async () => {
-    const phone_number = "9456809435"; // Replace with dynamic phone number from form/input
-    const amount = 500; // Replace with dynamic amount from the user input
-
-    try {
-      setIsLoading(true);
-      // Step 1: Request to create a payment order from the backend
-      const response = await fetch('http://127.0.0.1:8000/api/payments/create-payment/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          phone_number,
-          amount,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to create payment order');
-      }
-
-      const data = await response.json();
-
-      // Step 2: Open Razorpay payment gateway
-      const options = {
-        key: data.razorpay_key, // Razorpay Key from the response
-        amount: data.amount, // Amount from the response
-        currency: data.currency,
-        name: "Rajasthan Bartender's Association",
-        description: "Membership Fee",
-        order_id: data.order_id, // Order ID from the response
-        handler: async (response) => {
-          // Step 3: Handle successful payment
-          const transaction_id = response.razorpay_payment_id;
-
-          // Step 4: Update payment status in the backend
-          const paymentResponse = await fetch('http://127.0.0.1:8000/api/payments/update-payment/', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              phone_number,
-              transaction_id,
-            }),
-          });
-
-          if (!paymentResponse.ok) {
-            throw new Error('Failed to update payment status');
-          }
-
-          const paymentData = await paymentResponse.json();
-          alert(paymentData.message); // Show success message
-          window.location.href = paymentData.redirect_to; // Redirect to WhatsApp link
-        },
-        prefill: {
-          name: "User Name",
-          email: "user@example.com",
-          contact: phone_number,
-        },
-        theme: {
-          color: "#F50057",
-        },
-      };
-
-      const razorpay = new window.Razorpay(options);
-      razorpay.open();
-    } catch (error) {
-      setError(error.message);
-      alert("Error: " + error.message);
-    } finally {
-      setIsLoading(false);
-    }
+  const handleJoinNowClick = () => {
+    const phoneNumber = "9828859669"; 
+    const message = encodeURIComponent("I want to join the Rajasthan Bartenders community. Guide me on how I can join.");
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+  
+    window.open(whatsappURL, "_blank");
   };
+  // const handleJoinNowClick = async () => {
+  //   const phone_number = "9456809435"; // Replace with dynamic phone number from form/input
+  //   const amount = 500; // Replace with dynamic amount from the user input
+
+  //   try {
+  //     setIsLoading(true);
+  //     // Step 1: Request to create a payment order from the backend
+  //     const response = await fetch('http://127.0.0.1:8000/api/payments/create-payment/', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({
+  //         phone_number,
+  //         amount,
+  //       }),
+  //     });
+
+  //     if (!response.ok) {
+  //       throw new Error('Failed to create payment order');
+  //     }
+
+  //     const data = await response.json();
+
+  //     // Step 2: Open Razorpay payment gateway
+  //     const options = {
+  //       key: data.razorpay_key, // Razorpay Key from the response
+  //       amount: data.amount, // Amount from the response
+  //       currency: data.currency,
+  //       name: "Rajasthan Bartender's Association",
+  //       description: "Membership Fee",
+  //       order_id: data.order_id, // Order ID from the response
+  //       handler: async (response) => {
+  //         // Step 3: Handle successful payment
+  //         const transaction_id = response.razorpay_payment_id;
+
+  //         // Step 4: Update payment status in the backend
+  //         const paymentResponse = await fetch('http://127.0.0.1:8000/api/payments/update-payment/', {
+  //           method: 'POST',
+  //           headers: {
+  //             'Content-Type': 'application/json',
+  //           },
+  //           body: JSON.stringify({
+  //             phone_number,
+  //             transaction_id,
+  //           }),
+  //         });
+
+  //         if (!paymentResponse.ok) {
+  //           throw new Error('Failed to update payment status');
+  //         }
+
+  //         const paymentData = await paymentResponse.json();
+  //         alert(paymentData.message); // Show success message
+  //         window.location.href = paymentData.redirect_to; // Redirect to WhatsApp link
+  //       },
+  //       prefill: {
+  //         name: "User Name",
+  //         email: "user@example.com",
+  //         contact: phone_number,
+  //       },
+  //       theme: {
+  //         color: "#F50057",
+  //       },
+  //     };
+
+  //     const razorpay = new window.Razorpay(options);
+  //     razorpay.open();
+  //   } catch (error) {
+  //     setError(error.message);
+  //     alert("Error: " + error.message);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
 
   return (
     <div className="why-join-us">
