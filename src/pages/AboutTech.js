@@ -47,6 +47,7 @@ const TechTeam = () => {
             >
               <img
                 src={member.image}
+                alt=""
                 className="team-image"
                 onError={(e) => (e.target.src = "https://via.placeholder.com/200")} // Fallback image
               />

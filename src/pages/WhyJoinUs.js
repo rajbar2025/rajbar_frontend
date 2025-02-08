@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './WhyJoinUs.css'; 
 import whyus1 from "../assets/whyus1.png";
 import whyus2 from "../assets/whyus2.png";

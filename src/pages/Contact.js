@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { submitFeedback } from "../api/api"; 
+// import { submitFeedback } from "../api/api"; 
 import "../styles/contact.css";
 
 const ContactForm = () => {
